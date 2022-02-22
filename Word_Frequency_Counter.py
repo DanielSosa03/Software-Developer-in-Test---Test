@@ -24,6 +24,8 @@ def wordsFrequencyDos(words):
         #Ignora el punto
         if elements[-1] == '.':
             elements = elements[0:len(elements) - 1]
+        if elements[-1] == ',':
+            elements = elements[0:len(elements) - 1]
         #Contador de elementos 
         if elements in dictionary:
             dictionary[elements] += 1
@@ -45,7 +47,7 @@ def wordsFrequencyDos(words):
 
     for result in sortedDict:
         print(result[0] + ":\t" + str(result[1]))
-        
+
 def run():
     #Ledctura del documento
     open_words = open('words.txt', 'r')
