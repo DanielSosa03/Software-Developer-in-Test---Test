@@ -5,8 +5,23 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-open_words = open('text_words.txt', 'r')
-text_words = open_words.read().lower()
+testOneLetter = open('testOneLetter.txt', 'r')
+test_One_Letter = testOneLetter.read().lower()
+
+testOneWord = open('testOneWord.txt', 'r')
+test_One_Word = testOneWord.read().lower()
+
+testMoreWord = open('testMoreWord.txt', 'r')
+test_More_Word = testMoreWord.read().lower()
+
+testNamesWord = open('testNamesWord.txt', 'r')
+test_Names_Word = testNamesWord.read().lower()
+
+testTextWord = open('testTextWord.txt', 'r')
+test_Text_Word = testTextWord.read().lower()
+
+testNumbersWord = open('testNumbersWord.txt', 'r')
+test_Number_sWord = testNumbersWord.read().lower()
 
 class WordCounterTestSuite(unittest.TestCase):
 
@@ -24,7 +39,7 @@ class WordCounterTestSuite(unittest.TestCase):
         driver = self.driver
 
         text_field = driver.find_element_by_id('box')
-        text_field.send_keys('a')
+        text_field.send_keys(test_One_Letter)
         
         #Espera implicita
         WebDriverWait(self.driver, 1).until(EC.element_to_be_clickable((By.XPATH, '/html/body/div[6]/div[1]/div[1]/div[4]/div/div[1]/div/div/div[3]/button')))
@@ -43,7 +58,7 @@ class WordCounterTestSuite(unittest.TestCase):
         driver = self.driver
 
         text_field = driver.find_element_by_id('box')
-        text_field.send_keys('a')
+        text_field.send_keys(test_One_Letter)
         
         #Espera implicita
         WebDriverWait(self.driver, 1).until(EC.element_to_be_clickable((By.XPATH, '/html/body/div[6]/div[1]/div[1]/div[4]/div/div[1]/div/div/div[3]/button')))
@@ -57,11 +72,11 @@ class WordCounterTestSuite(unittest.TestCase):
 
         self.assertEquals(expected_characters_value, result_text_count_character, "The value expected does not match the number of characters.")
 
-    def testFirstOneLetterFrecuencyCounter(self):
+    def testFirstOneLetterDensityCounter(self):
         driver = self.driver
 
         text_field = driver.find_element_by_id('box')
-        text_field.send_keys('a')
+        text_field.send_keys(test_One_Letter)
 
         #Espera implicita
         WebDriverWait(self.driver, 1).until(EC.element_to_be_clickable((By.XPATH, '/html/body/div[6]/div[1]/div[1]/div[4]/div/div[1]/div/div/div[3]/button')))
@@ -70,14 +85,29 @@ class WordCounterTestSuite(unittest.TestCase):
         frequency_first_word = driver.find_element_by_xpath('/html/body/div[6]/div[1]/div[5]/div/div[2]/div[2]/div[1]/a[1]/span[1]')
         print(first_word.text, '; ', frequency_first_word.text[0])
 
-        self.assertEqual(int(frequency_first_word.text[0]), 1, 'The density frequency expected does not match the word.')
+        self.assertEqual(first_word.text, 'a', 'The density expected does not match the word.')
+
+    def testFirstOneLetterFrecuencyCounter(self):
+        driver = self.driver
+
+        text_field = driver.find_element_by_id('box')
+        text_field.send_keys(test_One_Letter)
+
+        #Espera implicita
+        WebDriverWait(self.driver, 1).until(EC.element_to_be_clickable((By.XPATH, '/html/body/div[6]/div[1]/div[1]/div[4]/div/div[1]/div/div/div[3]/button')))
+       
+        first_word = driver.find_element_by_xpath('/html/body/div[6]/div[1]/div[5]/div/div[2]/div[2]/div[1]/a[1]/span[2]')
+        frequency_first_word = driver.find_element_by_xpath('/html/body/div[6]/div[1]/div[5]/div/div[2]/div[2]/div[1]/a[1]/span[1]')
+        print(first_word.text, '; ', frequency_first_word.text[0])
+
+        self.assertEqual(int(frequency_first_word.text[0]), 1, 'The frequency expected does not match the word.')
 
 #______________________________________________________________________________________________
     def testOneWordWordCounter(self):
         driver = self.driver
 
         text_field = driver.find_element_by_id('box')
-        text_field.send_keys('hello')
+        text_field.send_keys(test_One_Word)
         
         #Espera implicita
         WebDriverWait(self.driver, 1).until(EC.element_to_be_clickable((By.XPATH, '/html/body/div[6]/div[1]/div[1]/div[4]/div/div[1]/div/div/div[3]/button')))
@@ -88,7 +118,7 @@ class WordCounterTestSuite(unittest.TestCase):
         result_text_count_words = int(count_words.text)
         print(result_text_count_words, ' words')
 
-        expected_value_words = 1
+        expected_value_words = 2
 
         self.assertEquals(expected_value_words, result_text_count_words, "The value expected does not match the number of words.")
 
@@ -96,7 +126,7 @@ class WordCounterTestSuite(unittest.TestCase):
         driver = self.driver
 
         text_field = driver.find_element_by_id('box')
-        text_field.send_keys('hello')
+        text_field.send_keys(test_One_Word)
         
         #Espera implicita
         WebDriverWait(self.driver, 1).until(EC.element_to_be_clickable((By.XPATH, '/html/body/div[6]/div[1]/div[1]/div[4]/div/div[1]/div/div/div[3]/button')))
@@ -106,15 +136,15 @@ class WordCounterTestSuite(unittest.TestCase):
         result_text_count_character = int(count_character.text)
         print(result_text_count_character, ' character')
 
-        expected_characters_value = 5
+        expected_characters_value = 11
 
         self.assertEquals(expected_characters_value, result_text_count_character, "The value expected does not match the number of characters.")
 
-    def testFirstOneWordFrecuencyCounter(self):
+    def testFirstOneWordDensityCounter(self):
         driver = self.driver
 
         text_field = driver.find_element_by_id('box')
-        text_field.send_keys('hello')
+        text_field.send_keys(test_One_Word)
 
         #Espera implicita
         WebDriverWait(self.driver, 1).until(EC.element_to_be_clickable((By.XPATH, '/html/body/div[6]/div[1]/div[1]/div[4]/div/div[1]/div/div/div[3]/button')))
@@ -123,14 +153,158 @@ class WordCounterTestSuite(unittest.TestCase):
         frequency_first_word = driver.find_element_by_xpath('/html/body/div[6]/div[1]/div[5]/div/div[2]/div[2]/div[1]/a[1]/span[1]')
         print(first_word.text, '; ', frequency_first_word.text[0])
 
-        self.assertEqual(int(frequency_first_word.text[0]), 1, 'The density frequency expected does not match the word.')
+        self.assertEqual(first_word.text, 'hello', 'The density expected does not match the word.')
+
+    def testFirstOneWordFrecuencyCounter(self):
+        driver = self.driver
+
+        text_field = driver.find_element_by_id('box')
+        text_field.send_keys(test_One_Word)
+
+        #Espera implicita
+        WebDriverWait(self.driver, 1).until(EC.element_to_be_clickable((By.XPATH, '/html/body/div[6]/div[1]/div[1]/div[4]/div/div[1]/div/div/div[3]/button')))
+       
+        first_word = driver.find_element_by_xpath('/html/body/div[6]/div[1]/div[5]/div/div[2]/div[2]/div[1]/a[1]/span[2]')
+        frequency_first_word = driver.find_element_by_xpath('/html/body/div[6]/div[1]/div[5]/div/div[2]/div[2]/div[1]/a[1]/span[1]')
+        print(first_word.text, '; ', frequency_first_word.text[0])
+
+        self.assertEqual(int(frequency_first_word.text[0]), 2, 'The frequency expected does not match the word.')
+
+#______________________________________________________________________________________________
+    def testMoreWordWordCounter(self):
+
+        driver = self.driver
+
+        text_field = driver.find_element_by_id('box')
+        text_field.send_keys(test_More_Word)
+        
+        #Espera implicita
+        WebDriverWait(self.driver, 1).until(EC.element_to_be_clickable((By.XPATH, '/html/body/div[6]/div[1]/div[1]/div[4]/div/div[1]/div/div/div[3]/button')))
+
+
+        #Encuentra el contador de palabras 
+        count_words = driver.find_element_by_id('word_count')
+        result_text_count_words = int(count_words.text)
+        print(result_text_count_words, ' words')
+
+        expected_value_words = 6
+
+        self.assertEquals(expected_value_words, result_text_count_words, "The value expected does not match the number of words.")
+
+    def testMoreWordCharacterCounter(self):
+        driver = self.driver
+
+        text_field = driver.find_element_by_id('box')
+        text_field.send_keys(test_More_Word)
+        
+        #Espera implicita
+        WebDriverWait(self.driver, 1).until(EC.element_to_be_clickable((By.XPATH, '/html/body/div[6]/div[1]/div[1]/div[4]/div/div[1]/div/div/div[3]/button')))
+
+     #Encuentra el contador de caracteres 
+        count_character = driver.find_element_by_id('character_count')
+        result_text_count_character = int(count_character.text)
+        print(result_text_count_character, ' character')
+
+        expected_characters_value = 26
+
+        self.assertEquals(expected_characters_value, result_text_count_character, "The value expected does not match the number of characters.")
+
+    def testMoreOneWordDensityCounter(self):
+        driver = self.driver
+
+        text_field = driver.find_element_by_id('box')
+        text_field.send_keys(test_More_Word)
+
+        #Espera implicita
+        WebDriverWait(self.driver, 1).until(EC.element_to_be_clickable((By.XPATH, '/html/body/div[6]/div[1]/div[1]/div[4]/div/div[1]/div/div/div[3]/button')))
+       
+        first_word = driver.find_element_by_xpath('/html/body/div[6]/div[1]/div[5]/div/div[2]/div[2]/div[1]/a[1]/span[2]')
+        frequency_first_word = driver.find_element_by_xpath('/html/body/div[6]/div[1]/div[5]/div/div[2]/div[2]/div[1]/a[1]/span[1]')
+        print(first_word.text, '; ', frequency_first_word.text[0])
+
+        self.assertEqual(first_word.text, 'dog', 'The density expected does not match the word.')
+
+    def testMoreOneWordFrecuencyCounter(self):
+        driver = self.driver
+
+        text_field = driver.find_element_by_id('box')
+        text_field.send_keys(test_More_Word)
+
+        #Espera implicita
+        WebDriverWait(self.driver, 1).until(EC.element_to_be_clickable((By.XPATH, '/html/body/div[6]/div[1]/div[1]/div[4]/div/div[1]/div/div/div[3]/button')))
+
+        first_word = driver.find_element_by_xpath('/html/body/div[6]/div[1]/div[5]/div/div[2]/div[2]/div[1]/a[1]/span[2]')
+        frequency_first_word = driver.find_element_by_xpath('/html/body/div[6]/div[1]/div[5]/div/div[2]/div[2]/div[1]/a[1]/span[1]')
+        print(first_word.text, '; ', frequency_first_word.text[0])
+
+        self.assertEqual(int(frequency_first_word.text[0]), 3, 'The frequency expected does not match the word.')
+
+    def testMoreSecondWordDensityCounter(self):
+        driver = self.driver
+
+        text_field = driver.find_element_by_id('box')
+        text_field.send_keys(test_More_Word)
+
+        #Espera implicita
+        WebDriverWait(self.driver, 1).until(EC.element_to_be_clickable((By.XPATH, '/html/body/div[6]/div[1]/div[1]/div[4]/div/div[1]/div/div/div[3]/button')))
+       
+        first_word = driver.find_element_by_xpath('/html/body/div[6]/div[1]/div[5]/div/div[2]/div[2]/div[1]/a[2]/span[2]')
+        frequency_first_word = driver.find_element_by_xpath('/html/body/div[6]/div[1]/div[5]/div/div[2]/div[2]/div[1]/a[2]/span[1]')
+        print(first_word.text, '; ', frequency_first_word.text[0])
+
+        self.assertEqual(first_word.text, 'cat', 'The density expected does not match the word.')
+
+    def testMoresSecondFrecuencyCounter(self):
+        driver = self.driver
+
+        text_field = driver.find_element_by_id('box')
+        text_field.send_keys(test_More_Word)
+
+        #Espera implicita
+        WebDriverWait(self.driver, 1).until(EC.element_to_be_clickable((By.XPATH, '/html/body/div[6]/div[1]/div[1]/div[4]/div/div[1]/div/div/div[3]/button')))
+  
+        second_word = driver.find_element_by_xpath('/html/body/div[6]/div[1]/div[5]/div/div[2]/div[2]/div[1]/a[2]/span[2]')
+        frequency_second_word = driver.find_element_by_xpath('/html/body/div[6]/div[1]/div[5]/div/div[2]/div[2]/div[1]/a[2]/span[1]')
+        print(second_word.text, '; ', frequency_second_word.text[0])
+
+        self.assertEqual(int(frequency_second_word.text[0]), 2, 'The frequency expected does not match the word.')
+
+    def testMoreThirdWordDensityCounter(self):
+        driver = self.driver
+
+        text_field = driver.find_element_by_id('box')
+        text_field.send_keys(test_More_Word)
+
+        #Espera implicita
+        WebDriverWait(self.driver, 1).until(EC.element_to_be_clickable((By.XPATH, '/html/body/div[6]/div[1]/div[1]/div[4]/div/div[1]/div/div/div[3]/button')))
+       
+        first_word = driver.find_element_by_xpath('/html/body/div[6]/div[1]/div[5]/div/div[2]/div[2]/div[1]/a[3]/span[2]')
+        frequency_first_word = driver.find_element_by_xpath('/html/body/div[6]/div[1]/div[5]/div/div[2]/div[2]/div[1]/a[3]/span[1]')
+        print(first_word.text, '; ', frequency_first_word.text[0])
+
+        self.assertEqual(first_word.text, 'gerbil', 'The density expected does not match the word.')
+
+    def testMoresThirdFrecuencyCounter(self):
+        driver = self.driver
+
+        text_field = driver.find_element_by_id('box')
+        text_field.send_keys(test_More_Word)
+
+        #Espera implicita
+        WebDriverWait(self.driver, 1).until(EC.element_to_be_clickable((By.XPATH, '/html/body/div[6]/div[1]/div[1]/div[4]/div/div[1]/div/div/div[3]/button')))
+  
+        second_word = driver.find_element_by_xpath('/html/body/div[6]/div[1]/div[5]/div/div[2]/div[2]/div[1]/a[3]/span[2]')
+        frequency_second_word = driver.find_element_by_xpath('/html/body/div[6]/div[1]/div[5]/div/div[2]/div[2]/div[1]/a[3]/span[1]')
+        print(second_word.text, '; ', frequency_second_word.text[0])
+
+        self.assertEqual(int(frequency_second_word.text[0]), 1, 'The frequency expected does not match the word.')
 
 #______________________________________________________________________________________________
     def testNamesWordWordCounter(self):
         driver = self.driver
 
         text_field = driver.find_element_by_id('box')
-        text_field.send_keys('Daniel Edward Santiago Pedro Edward Daniel Erika Alexander Oscar Daniel Pedro Pedro Pedro Erika')
+        text_field.send_keys(test_Names_Word)
         
         #Espera implicita
         WebDriverWait(self.driver, 1).until(EC.element_to_be_clickable((By.XPATH, '/html/body/div[6]/div[1]/div[1]/div[4]/div/div[1]/div/div/div[3]/button')))
@@ -149,7 +323,7 @@ class WordCounterTestSuite(unittest.TestCase):
         driver = self.driver
 
         text_field = driver.find_element_by_id('box')
-        text_field.send_keys('Daniel Edward Santiago Pedro Edward Daniel Erika Alexander Oscar Daniel Pedro Pedro Pedro Erika')
+        text_field.send_keys(test_Names_Word)
         
         #Espera implicita
         WebDriverWait(self.driver, 1).until(EC.element_to_be_clickable((By.XPATH, '/html/body/div[6]/div[1]/div[1]/div[4]/div/div[1]/div/div/div[3]/button')))
@@ -163,11 +337,26 @@ class WordCounterTestSuite(unittest.TestCase):
 
         self.assertEquals(expected_characters_value, result_text_count_character, "The value expected does not match the number of characters.")
 
+    def testNamesOneWordDensityCounter(self):
+        driver = self.driver
+
+        text_field = driver.find_element_by_id('box')
+        text_field.send_keys(test_Names_Word)
+
+        #Espera implicita
+        WebDriverWait(self.driver, 1).until(EC.element_to_be_clickable((By.XPATH, '/html/body/div[6]/div[1]/div[1]/div[4]/div/div[1]/div/div/div[3]/button')))
+       
+        first_word = driver.find_element_by_xpath('/html/body/div[6]/div[1]/div[5]/div/div[2]/div[2]/div[1]/a[1]/span[2]')
+        frequency_first_word = driver.find_element_by_xpath('/html/body/div[6]/div[1]/div[5]/div/div[2]/div[2]/div[1]/a[1]/span[1]')
+        print(first_word.text, '; ', frequency_first_word.text[0])
+
+        self.assertEqual(first_word.text, 'pedro', 'The density expected does not match the word.')
+
     def testNamesOneWordFrecuencyCounter(self):
         driver = self.driver
 
         text_field = driver.find_element_by_id('box')
-        text_field.send_keys('Daniel Edward Santiago Pedro Edward Daniel Erika Alexander Oscar Daniel Pedro Pedro Pedro Erika')
+        text_field.send_keys(test_Names_Word)
 
         #Espera implicita
         WebDriverWait(self.driver, 1).until(EC.element_to_be_clickable((By.XPATH, '/html/body/div[6]/div[1]/div[1]/div[4]/div/div[1]/div/div/div[3]/button')))
@@ -176,38 +365,74 @@ class WordCounterTestSuite(unittest.TestCase):
         frequency_first_word = driver.find_element_by_xpath('/html/body/div[6]/div[1]/div[5]/div/div[2]/div[2]/div[1]/a[1]/span[1]')
         print(first_word.text, '; ', frequency_first_word.text[0])
 
-        self.assertEqual(int(frequency_first_word.text[0]), 4, 'The density frequency expected does not match the word.')
+        self.assertEqual(int(frequency_first_word.text[0]), 4, 'The frequency expected does not match the word.')
+
+    def testNamesSecondWordDensityCounter(self):
+        driver = self.driver
+
+        text_field = driver.find_element_by_id('box')
+        text_field.send_keys(test_Names_Word)
+
+        #Espera implicita
+        WebDriverWait(self.driver, 1).until(EC.element_to_be_clickable((By.XPATH, '/html/body/div[6]/div[1]/div[1]/div[4]/div/div[1]/div/div/div[3]/button')))
+       
+        first_word = driver.find_element_by_xpath('/html/body/div[6]/div[1]/div[5]/div/div[2]/div[2]/div[1]/a[2]/span[2]')
+        frequency_first_word = driver.find_element_by_xpath('/html/body/div[6]/div[1]/div[5]/div/div[2]/div[2]/div[1]/a[2]/span[1]')
+        print(first_word.text, '; ', frequency_first_word.text[0])
+
+        self.assertEqual(first_word.text, 'daniel', 'The density expected does not match the word.')
 
     def testNamesSecondFrecuencyCounter(self):
         driver = self.driver
 
         text_field = driver.find_element_by_id('box')
-        text_field.send_keys('Daniel Edward Santiago Pedro Edward Daniel Erika Alexander Oscar Daniel Pedro Pedro Pedro Erika')
+        text_field.send_keys(test_Names_Word)
+
+        #Espera implicita
+        WebDriverWait(self.driver, 1).until(EC.element_to_be_clickable((By.XPATH, '/html/body/div[6]/div[1]/div[1]/div[4]/div/div[1]/div/div/div[3]/button')))
 
         second_word = driver.find_element_by_xpath(f'/html/body/div[6]/div[1]/div[5]/div/div[2]/div[2]/div[1]/a[2]/span[2]')
         frequency_second_word = driver.find_element_by_xpath(f'/html/body/div[6]/div[1]/div[5]/div/div[2]/div[2]/div[1]/a[2]/span[1]')
         print(second_word.text, '; ', frequency_second_word.text[0])
 
-        self.assertEqual(int(frequency_second_word.text[0]), 3, 'The density frequency expected does not match the word.')
+        self.assertEqual(int(frequency_second_word.text[0]), 3, 'The frequency expected does not match the word.')
+
+    def testNamesThirdWordDensityCounter(self):
+        driver = self.driver
+
+        text_field = driver.find_element_by_id('box')
+        text_field.send_keys(test_Names_Word)
+
+        #Espera implicita
+        WebDriverWait(self.driver, 1).until(EC.element_to_be_clickable((By.XPATH, '/html/body/div[6]/div[1]/div[1]/div[4]/div/div[1]/div/div/div[3]/button')))
+       
+        first_word = driver.find_element_by_xpath('/html/body/div[6]/div[1]/div[5]/div/div[2]/div[2]/div[1]/a[3]/span[2]')
+        frequency_first_word = driver.find_element_by_xpath('/html/body/div[6]/div[1]/div[5]/div/div[2]/div[2]/div[1]/a[3]/span[1]')
+        print(first_word.text, '; ', frequency_first_word.text[0])
+
+        self.assertEqual(first_word.text, 'edward', 'The density expected does not match the word.')
 
     def testNamesThirdFrecuencyCounter(self):
         driver = self.driver
 
         text_field = driver.find_element_by_id('box')
-        text_field.send_keys('Daniel Edward Santiago Pedro Edward Daniel Erika Alexander Oscar Daniel Pedro Pedro Pedro Erika')
+        text_field.send_keys(test_Names_Word)
 
+        #Espera implicita
+        WebDriverWait(self.driver, 1).until(EC.element_to_be_clickable((By.XPATH, '/html/body/div[6]/div[1]/div[1]/div[4]/div/div[1]/div/div/div[3]/button')))
+  
         third_word = driver.find_element_by_xpath('/html/body/div[6]/div[1]/div[5]/div/div[2]/div[2]/div[1]/a[3]/span[2]')
         frequency_third_word = driver.find_element_by_xpath('/html/body/div[6]/div[1]/div[5]/div/div[2]/div[2]/div[1]/a[3]/span[1]')
         print(third_word.text, '; ', frequency_third_word.text[0])
 
-        self.assertEqual(int(frequency_third_word.text[0]), 2, 'The density frequency expected does not match the word.')
+        self.assertEqual(int(frequency_third_word.text[0]), 2, 'The frequency expected does not match the word.')
 
 #______________________________________________________________________________________________
     def testTextWordWordCounter(self):
         driver = self.driver
 
         text_field = driver.find_element_by_id('box')
-        text_field.send_keys(text_words)
+        text_field.send_keys(test_Text_Word)
         
         #Espera implicita
         WebDriverWait(self.driver, 1).until(EC.element_to_be_clickable((By.XPATH, '/html/body/div[6]/div[1]/div[1]/div[4]/div/div[1]/div/div/div[3]/button')))
@@ -226,7 +451,7 @@ class WordCounterTestSuite(unittest.TestCase):
         driver = self.driver
 
         text_field = driver.find_element_by_id('box')
-        text_field.send_keys(text_words)
+        text_field.send_keys(test_Text_Word)
         
         #Espera implicita
         WebDriverWait(self.driver, 1).until(EC.element_to_be_clickable((By.XPATH, '/html/body/div[6]/div[1]/div[1]/div[4]/div/div[1]/div/div/div[3]/button')))
@@ -240,11 +465,26 @@ class WordCounterTestSuite(unittest.TestCase):
 
         self.assertEquals(expected_characters_value, result_text_count_character, "The value expected does not match the number of characters.")
 
+    def testTextOneWordDensityCounter(self):
+        driver = self.driver
+
+        text_field = driver.find_element_by_id('box')
+        text_field.send_keys(test_Text_Word)
+
+        #Espera implicita
+        WebDriverWait(self.driver, 1).until(EC.element_to_be_clickable((By.XPATH, '/html/body/div[6]/div[1]/div[1]/div[4]/div/div[1]/div/div/div[3]/button')))
+       
+        first_word = driver.find_element_by_xpath('/html/body/div[6]/div[1]/div[5]/div/div[2]/div[2]/div[1]/a[1]/span[2]')
+        frequency_first_word = driver.find_element_by_xpath('/html/body/div[6]/div[1]/div[5]/div/div[2]/div[2]/div[1]/a[1]/span[1]')
+        print(first_word.text, '; ', frequency_first_word.text[0])
+
+        self.assertEqual(first_word.text, 'black', 'The density expected does not match the word.')
+
     def testTextOneWordFrecuencyCounter(self):
         driver = self.driver
 
         text_field = driver.find_element_by_id('box')
-        text_field.send_keys(text_words)
+        text_field.send_keys(test_Text_Word)
 
         #Espera implicita
         WebDriverWait(self.driver, 1).until(EC.element_to_be_clickable((By.XPATH, '/html/body/div[6]/div[1]/div[1]/div[4]/div/div[1]/div/div/div[3]/button')))
@@ -253,89 +493,138 @@ class WordCounterTestSuite(unittest.TestCase):
         frequency_first_word = driver.find_element_by_xpath('/html/body/div[6]/div[1]/div[5]/div/div[2]/div[2]/div[1]/a[1]/span[1]')
         print(first_word.text, '; ', frequency_first_word.text[0])
 
-        self.assertEqual(int(frequency_first_word.text[0]), 6, 'The density frequency expected does not match the word.')
+        self.assertEqual(int(frequency_first_word.text[0]), 6, 'The frequency expected does not match the word.')
+
+    def testTextSecondWordDensityCounter(self):
+        driver = self.driver
+
+        text_field = driver.find_element_by_id('box')
+        text_field.send_keys(test_Text_Word)
+
+        #Espera implicita
+        WebDriverWait(self.driver, 1).until(EC.element_to_be_clickable((By.XPATH, '/html/body/div[6]/div[1]/div[1]/div[4]/div/div[1]/div/div/div[3]/button')))
+       
+        first_word = driver.find_element_by_xpath('/html/body/div[6]/div[1]/div[5]/div/div[2]/div[2]/div[1]/a[2]/span[2]')
+        frequency_first_word = driver.find_element_by_xpath('/html/body/div[6]/div[1]/div[5]/div/div[2]/div[2]/div[1]/a[2]/span[1]')
+        print(first_word.text, '; ', frequency_first_word.text[0])
+
+        self.assertEqual(first_word.text, 'hole', 'The density expected does not match the word.')
 
     def testTextSecondFrecuencyCounter(self):
         driver = self.driver
 
         text_field = driver.find_element_by_id('box')
-        text_field.send_keys(text_words)
+        text_field.send_keys(test_Text_Word)
+
+        #Espera implicita
+        WebDriverWait(self.driver, 1).until(EC.element_to_be_clickable((By.XPATH, '/html/body/div[6]/div[1]/div[1]/div[4]/div/div[1]/div/div/div[3]/button')))
 
         second_word = driver.find_element_by_xpath(f'/html/body/div[6]/div[1]/div[5]/div/div[2]/div[2]/div[1]/a[2]/span[2]')
         frequency_second_word = driver.find_element_by_xpath(f'/html/body/div[6]/div[1]/div[5]/div/div[2]/div[2]/div[1]/a[2]/span[1]')
         print(second_word.text, '; ', frequency_second_word.text[0])
 
-        self.assertEqual(int(frequency_second_word.text[0]), 3, 'The density frequency expected does not match the word.')
+        self.assertEqual(int(frequency_second_word.text[0]), 3, 'The frequency expected does not match the word.')
+
+    def testTextThirdWordDensityCounter(self):
+        driver = self.driver
+
+        text_field = driver.find_element_by_id('box')
+        text_field.send_keys(test_Text_Word)
+
+        #Espera implicita
+        WebDriverWait(self.driver, 1).until(EC.element_to_be_clickable((By.XPATH, '/html/body/div[6]/div[1]/div[1]/div[4]/div/div[1]/div/div/div[3]/button')))
+       
+        first_word = driver.find_element_by_xpath('/html/body/div[6]/div[1]/div[5]/div/div[2]/div[2]/div[1]/a[3]/span[2]')
+        frequency_first_word = driver.find_element_by_xpath('/html/body/div[6]/div[1]/div[5]/div/div[2]/div[2]/div[1]/a[3]/span[1]')
+        print(first_word.text, '; ', frequency_first_word.text[0])
+
+        self.assertEqual(first_word.text, 'spacetime', 'The density expected does not match the word.')
 
     def testTextThirdFrecuencyCounter(self):
         driver = self.driver
 
         text_field = driver.find_element_by_id('box')
-        text_field.send_keys(text_words)
+        text_field.send_keys(test_Text_Word)
+
+        #Espera implicita
+        WebDriverWait(self.driver, 1).until(EC.element_to_be_clickable((By.XPATH, '/html/body/div[6]/div[1]/div[1]/div[4]/div/div[1]/div/div/div[3]/button')))
 
         third_word = driver.find_element_by_xpath('/html/body/div[6]/div[1]/div[5]/div/div[2]/div[2]/div[1]/a[3]/span[2]')
         frequency_third_word = driver.find_element_by_xpath('/html/body/div[6]/div[1]/div[5]/div/div[2]/div[2]/div[1]/a[3]/span[1]')
         print(third_word.text, '; ', frequency_third_word.text[0])
 
-        self.assertEqual(int(frequency_third_word.text[0]), 3, 'The density frequency expected does not match the word.')
+        self.assertEqual(int(frequency_third_word.text[0]), 3, 'The frequency expected does not match the word.')
 
 #______________________________________________________________________________________________
+    def testNumbersWordCounter(self):
+        driver = self.driver
 
-    # def testWordCounter(self):
-    #     driver = self.driver
-    #     #Encuentra el contador de palabras 
-    #     count_words = driver.find_element_by_id('word_count')
-    #     result_text_count_words = int(count_words.text)
-    #     print(result_text_count_words, ' words')
-
-    #     expected_value_words = 10
-
-    #     self.assertEquals(expected_value_words, result_text_count_words, "The value does not match the number of words.")
-
-    # def testCharacterCounter(self):
-    #     driver = self.driver
-    #  #Encuentra el contador de caracteres 
-    #     count_character = driver.find_element_by_id('character_count')
-    #     result_text_count_character = int(count_character.text)
-    #     print(result_text_count_character, ' character')
-
-    #     expected_characters_value = 53
-
-    #     self.assertEquals(expected_characters_value, result_text_count_character, "The value does not match the number of characters.")
-       
-
-    # def testFirstFrecuencyCounter(self):
-    #     driver = self.driver
-       
-    #     first_word = driver.find_element_by_xpath(f'/html/body/div[6]/div[1]/div[5]/div/div[2]/div[2]/div[1]/a[1]/span[2]')
-    #     frequency_first_word = driver.find_element_by_xpath(f'/html/body/div[6]/div[1]/div[5]/div/div[2]/div[2]/div[1]/a[1]/span[1]')
-    #     print(first_word.text, '; ', frequency_first_word.text[0])
-
-    #     self.assertEqual(int(frequency_first_word.text[0]), 2)
-
-    # def testSecondFrecuencyCounter(self):
-    #     driver = self.driver
-
-    #     second_word = driver.find_element_by_xpath(f'/html/body/div[6]/div[1]/div[5]/div/div[2]/div[2]/div[1]/a[2]/span[2]')
-    #     frequency_second_word = driver.find_element_by_xpath(f'/html/body/div[6]/div[1]/div[5]/div/div[2]/div[2]/div[1]/a[2]/span[1]')
-    #     print(second_word.text, '; ', frequency_second_word.text[0])
-
-    #     self.assertEqual(int(frequency_second_word.text[0]), 1)
-
-    # def testThirdFrecuencyCounter(self):
-    #     driver = self.driver
+        text_field = driver.find_element_by_id('box')
+        text_field.send_keys(test_Number_sWord)
         
-    #     third_word = driver.find_element_by_xpath(f'/html/body/div[6]/div[1]/div[5]/div/div[2]/div[2]/div[1]/a[3]/span[2]')
-    #     frequency_third_word = driver.find_element_by_xpath(f'/html/body/div[6]/div[1]/div[5]/div/div[2]/div[2]/div[1]/a[3]/span[1]')
-    #     print(third_word.text, '; ', frequency_third_word.text[0])
-
-    #     self.assertEqual(int(frequency_third_word.text[0]), 2)
+        #Espera implicita
+        WebDriverWait(self.driver, 1).until(EC.element_to_be_clickable((By.XPATH, '/html/body/div[6]/div[1]/div[1]/div[4]/div/div[1]/div/div/div[3]/button')))
 
 
+        #Encuentra el contador de palabras 
+        count_words = driver.find_element_by_id('word_count')
+        result_text_count_words = int(count_words.text)
+        print(result_text_count_words, ' words')
 
+        expected_value_words = 9
 
+        self.assertEquals(expected_value_words, result_text_count_words, "The value expected does not match the number of words.")
+
+    def testNumbersCharacterCounter(self):
+        driver = self.driver
+
+        text_field = driver.find_element_by_id('box')
+        text_field.send_keys(test_Number_sWord)
+        
+        #Espera implicita
+        WebDriverWait(self.driver, 1).until(EC.element_to_be_clickable((By.XPATH, '/html/body/div[6]/div[1]/div[1]/div[4]/div/div[1]/div/div/div[3]/button')))
+
+     #Encuentra el contador de caracteres 
+        count_character = driver.find_element_by_id('character_count')
+        result_text_count_character = int(count_character.text)
+        print(result_text_count_character, ' character')
+
+        expected_characters_value = 33
+
+        self.assertEquals(expected_characters_value, result_text_count_character, "The value expected does not match the number of characters.")
+
+    def testNumbersOneDensityCounter(self):
+        driver = self.driver
+
+        text_field = driver.find_element_by_id('box')
+        text_field.send_keys(test_Number_sWord)
+
+        #Espera implicita
+        WebDriverWait(self.driver, 1).until(EC.element_to_be_clickable((By.XPATH, '/html/body/div[6]/div[1]/div[1]/div[4]/div/div[1]/div/div/div[3]/button')))
+       
+        first_word = driver.find_element_by_xpath('/html/body/div[6]/div[1]/div[5]/div/div[2]/div[2]/div[1]/a[1]/span[2]')
+        frequency_first_word = driver.find_element_by_xpath('/html/body/div[6]/div[1]/div[5]/div/div[2]/div[2]/div[1]/a[1]/span[1]')
+        print(first_word.text, '; ', frequency_first_word.text[0])
+
+        self.assertEqual(first_word.text, '49', 'The density expected does not match the word.')
+
+    def testNumbersOneFrecuencyCounter(self):
+        driver = self.driver
+
+        text_field = driver.find_element_by_id('box')
+        text_field.send_keys(test_Number_sWord)
+
+        #Espera implicita
+        WebDriverWait(self.driver, 1).until(EC.element_to_be_clickable((By.XPATH, '/html/body/div[6]/div[1]/div[1]/div[4]/div/div[1]/div/div/div[3]/button')))
+
+        first_word = driver.find_element_by_xpath('/html/body/div[6]/div[1]/div[5]/div/div[2]/div[2]/div[1]/a[1]/span[2]')
+        frequency_first_word = driver.find_element_by_xpath('/html/body/div[6]/div[1]/div[5]/div/div[2]/div[2]/div[1]/a[1]/span[1]')
+        print(first_word.text, '; ', frequency_first_word.text[0])
+
+        self.assertEqual(int(frequency_first_word.text[0]), 3, 'The frequency expected does not match the word.')
+
+#______________________________________________________________________________________________
     #Cierra automaticamente el navegador para no consumir memoría en la máquina 
-
     def tearDown(self):
         self.driver.quit()
 
