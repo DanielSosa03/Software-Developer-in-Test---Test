@@ -1,0 +1,2 @@
+# Software-Developer-in-Test---Test
+In this repository you will find the algorithm designed in python that will read a text .txt file to count the frequency of words in the text along with the number of words and characters. You will also find the Test Suite for the page https://wordcounter.net/ creating a set of tests that validate the # of words, the # of characters and the frequency of words in a text.
