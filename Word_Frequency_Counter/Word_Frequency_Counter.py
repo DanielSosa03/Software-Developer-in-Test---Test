@@ -17,11 +17,16 @@ def wordsCounterWords(words):
         words_list.append(i)
     print(len(words_list), '\twords')
 
-
 def wordsFrequencyDos(words):
+    #Declara el diccionario 
+    dictionary = {}
+
+    #Divide las palabras entrantes del texto 
+    words_count = words.split()
+
     #Contador de la frecuencia de las palabras
     def count(elements):
-        #Ignora el punto
+        #Ignora el punto y la coma
         if elements[-1] == '.':
             elements = elements[0:len(elements) - 1]
         if elements[-1] == ',':
@@ -32,13 +37,9 @@ def wordsFrequencyDos(words):
 
         else:
             dictionary.update({elements: 1})
-    #Declara el diccionario 
-    dictionary = {}
-    #Divide las palabras entrantes del texto 
-    lis = words.split()
 
-    #Cuenta los elementos en el lis
-    for elements in lis:
+    #Cuenta los elementos en el words_count
+    for elements in words_count:
         count(elements)
 
     for allKeys in dictionary:

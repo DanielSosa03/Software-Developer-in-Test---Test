@@ -122,7 +122,7 @@ class WordCounterTestSuite(unittest.TestCase):
 
         self.assertEquals(expected_value_words, result_text_count_words, "The value expected does not match the number of words.")
 
-    def testOneWordCharacterCounter(self):
+    def testOneCharacterCounter(self):
         driver = self.driver
 
         text_field = driver.find_element_by_id('box')
@@ -140,7 +140,7 @@ class WordCounterTestSuite(unittest.TestCase):
 
         self.assertEquals(expected_characters_value, result_text_count_character, "The value expected does not match the number of characters.")
 
-    def testFirstOneWordDensityCounter(self):
+    def testFirstOneDensityCounter(self):
         driver = self.driver
 
         text_field = driver.find_element_by_id('box')
@@ -155,7 +155,7 @@ class WordCounterTestSuite(unittest.TestCase):
 
         self.assertEqual(first_word.text, 'hello', 'The density expected does not match the word.')
 
-    def testFirstOneWordFrecuencyCounter(self):
+    def testFirstOneFrecuencyCounter(self):
         driver = self.driver
 
         text_field = driver.find_element_by_id('box')
@@ -191,7 +191,7 @@ class WordCounterTestSuite(unittest.TestCase):
 
         self.assertEquals(expected_value_words, result_text_count_words, "The value expected does not match the number of words.")
 
-    def testMoreWordCharacterCounter(self):
+    def testMoreCharacterCounter(self):
         driver = self.driver
 
         text_field = driver.find_element_by_id('box')
@@ -209,7 +209,7 @@ class WordCounterTestSuite(unittest.TestCase):
 
         self.assertEquals(expected_characters_value, result_text_count_character, "The value expected does not match the number of characters.")
 
-    def testMoreOneWordDensityCounter(self):
+    def testMoreOneDensityCounter(self):
         driver = self.driver
 
         text_field = driver.find_element_by_id('box')
@@ -224,7 +224,7 @@ class WordCounterTestSuite(unittest.TestCase):
 
         self.assertEqual(first_word.text, 'dog', 'The density expected does not match the word.')
 
-    def testMoreOneWordFrecuencyCounter(self):
+    def testMoreOneFrecuencyCounter(self):
         driver = self.driver
 
         text_field = driver.find_element_by_id('box')
@@ -239,7 +239,7 @@ class WordCounterTestSuite(unittest.TestCase):
 
         self.assertEqual(int(frequency_first_word.text[0]), 3, 'The frequency expected does not match the word.')
 
-    def testMoreSecondWordDensityCounter(self):
+    def testMoreSecondDensityCounter(self):
         driver = self.driver
 
         text_field = driver.find_element_by_id('box')
@@ -269,7 +269,7 @@ class WordCounterTestSuite(unittest.TestCase):
 
         self.assertEqual(int(frequency_second_word.text[0]), 2, 'The frequency expected does not match the word.')
 
-    def testMoreThirdWordDensityCounter(self):
+    def testMoreThirdDensityCounter(self):
         driver = self.driver
 
         text_field = driver.find_element_by_id('box')
@@ -319,7 +319,7 @@ class WordCounterTestSuite(unittest.TestCase):
 
         self.assertEquals(expected_value_words, result_text_count_words, "The value expected does not match the number of words.")
 
-    def testNamesWordCharacterCounter(self):
+    def testNamesCharacterCounter(self):
         driver = self.driver
 
         text_field = driver.find_element_by_id('box')
@@ -337,7 +337,7 @@ class WordCounterTestSuite(unittest.TestCase):
 
         self.assertEquals(expected_characters_value, result_text_count_character, "The value expected does not match the number of characters.")
 
-    def testNamesOneWordDensityCounter(self):
+    def testNamesOneDensityCounter(self):
         driver = self.driver
 
         text_field = driver.find_element_by_id('box')
@@ -352,7 +352,7 @@ class WordCounterTestSuite(unittest.TestCase):
 
         self.assertEqual(first_word.text, 'pedro', 'The density expected does not match the word.')
 
-    def testNamesOneWordFrecuencyCounter(self):
+    def testNamesOneFrecuencyCounter(self):
         driver = self.driver
 
         text_field = driver.find_element_by_id('box')
@@ -367,7 +367,7 @@ class WordCounterTestSuite(unittest.TestCase):
 
         self.assertEqual(int(frequency_first_word.text[0]), 4, 'The frequency expected does not match the word.')
 
-    def testNamesSecondWordDensityCounter(self):
+    def testNamesSecondDensityCounter(self):
         driver = self.driver
 
         text_field = driver.find_element_by_id('box')
@@ -397,7 +397,7 @@ class WordCounterTestSuite(unittest.TestCase):
 
         self.assertEqual(int(frequency_second_word.text[0]), 3, 'The frequency expected does not match the word.')
 
-    def testNamesThirdWordDensityCounter(self):
+    def testNamesThirdDensityCounter(self):
         driver = self.driver
 
         text_field = driver.find_element_by_id('box')
@@ -447,7 +447,7 @@ class WordCounterTestSuite(unittest.TestCase):
 
         self.assertEquals(expected_value_words, result_text_count_words, "The value expected does not match the number of words.")
 
-    def testTextWordCharacterCounter(self):
+    def testTextCharacterCounter(self):
         driver = self.driver
 
         text_field = driver.find_element_by_id('box')
@@ -465,7 +465,7 @@ class WordCounterTestSuite(unittest.TestCase):
 
         self.assertEquals(expected_characters_value, result_text_count_character, "The value expected does not match the number of characters.")
 
-    def testTextOneWordDensityCounter(self):
+    def testTextOneDensityCounter(self):
         driver = self.driver
 
         text_field = driver.find_element_by_id('box')
@@ -480,7 +480,7 @@ class WordCounterTestSuite(unittest.TestCase):
 
         self.assertEqual(first_word.text, 'black', 'The density expected does not match the word.')
 
-    def testTextOneWordFrecuencyCounter(self):
+    def testTextOneFrecuencyCounter(self):
         driver = self.driver
 
         text_field = driver.find_element_by_id('box')
@@ -495,7 +495,7 @@ class WordCounterTestSuite(unittest.TestCase):
 
         self.assertEqual(int(frequency_first_word.text[0]), 6, 'The frequency expected does not match the word.')
 
-    def testTextSecondWordDensityCounter(self):
+    def testTextSecondDensityCounter(self):
         driver = self.driver
 
         text_field = driver.find_element_by_id('box')
@@ -525,7 +525,7 @@ class WordCounterTestSuite(unittest.TestCase):
 
         self.assertEqual(int(frequency_second_word.text[0]), 3, 'The frequency expected does not match the word.')
 
-    def testTextThirdWordDensityCounter(self):
+    def testTextThirdDensityCounter(self):
         driver = self.driver
 
         text_field = driver.find_element_by_id('box')
