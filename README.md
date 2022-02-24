@@ -5,7 +5,7 @@ ________________________________________________________________________________
 
 All the files are located in the MASTER branch, there you will find the tests and the text counter algorithm.
 In the Word_Frequency_Counter folder there is a file Word_Frequency_Counter.py developed in Python that will read the text file words.txt and will be in charge of counting the number of words, the number of characters and the frequency with which each word is counted.
-To execute this file it is necessary to have Python in your preferred version, once you have Python you can run the code from the terminal, you have to take into account the location of the repository where the file has been cloned, once in the terminal you are in the corresponding location, you can execute the command "python Word_Frequency_Counter.py" or " python3 Word_Frequency_Counter.py" or the command "py Word_Frequency_Counter.py" to execute.
+To execute this file it is necessary to have Python in your preferred version, once you have Python you can run the code from the terminal, you have to keep in mid the location of the repository where the file has been cloned, once in the terminal you are in the corresponding location, you can execute the command "python Word_Frequency_Counter.py" or " python3 Word_Frequency_Counter.py" or the command "py Word_Frequency_Counter.py" to execute.
 Once the execution of the file is finished, it will give you the results in a histogram summarizing the number of words counted, the number of characters found and the frequency with which each word is repeated in descending order.
 If you want to change the text, you can open the words.txt file and edit the preferred text you want to evaluate, SUCCESSES.
 
